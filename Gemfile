@@ -46,6 +46,7 @@ gem "devise"
 gem "simple_calendar", "~> 2.4"
 gem 'bulma-rails', '~> 0.0.4.1'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem "middleman"
 
 # Use Sass to process CSS
 # gem "sassc-rails"
