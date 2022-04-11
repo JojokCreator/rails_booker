@@ -1,0 +1,10 @@
+.simple-calendar td {
+    height: 100px; 
+    width: 14.28%;  
+}
+.simple-calendar .has-events{
+    background-color:bisque
+}
+.box{
+    background-color:bisque
+}

@@ -1,0 +1,60 @@
+<nav class="navbar" is-spaced role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+      <a class="navbar-item" href="#">
+        <% if current_user %>
+        <%= current_user.email %>
+        <% if current_user.admin? %>
+        <p> - admin<p/>
+        <% end %>
+        <% end %>            
+      </a>
+      <div class="navbar-burger burger" data-target="main-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div id="main-nav" class="navbar-menu">
+      <div class="navbar-start">
+        <%= link_to root_url, class: 'navbar-item' do %>
+          <span class="icon"><i class="far fa-gem"></i></span>
+          <span>Home</span>
+        <% end %>
+
+        <% if current_user %>
+          <%= link_to bookings_url, class: 'navbar-item' do %>
+          <span class="icon"><i class="far fa-star"></i></span>
+          <span>Bookings</span>
+          <% end %>
+
+          <%= link_to destroy_user_session_path, class: 'navbar-item' do %>
+          <span class="icon"><i class="far fa-star"></i></span>
+          <span>Sign Out</span>
+          <% end %>
+
+        <% else %>
+          <%= link_to new_user_registration_path, class: 'navbar-item' do %>
+          <span class="icon"><i class="far fa-star"></i></span>
+          <span>Sign Up</span>
+          <% end %>
+
+          <%= link_to new_user_session_path, class: 'navbar-item' do %>
+          <span class="icon"><i class="far fa-star"></i></span>
+          <span>Login</span>
+          <% end %>
+    <% end %>    
+      </div>
+    </div>
+  </nav>  
+</div>
+<script type="text/javascript"> <!-- add this for menu toggle button  -->
+(function() {
+    var burger = document.querySelector('.navbar-burger');
+    var menu = document.querySelector('#'+burger.dataset.target);
+    burger.addEventListener('click', function() {
+        burger.classList.toggle('is-active');
+        menu.classList.toggle('is-active');
+    });
+})();
+</script>

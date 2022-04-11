@@ -1,0 +1,29 @@
+<div id="<%= dom_id booking %>">
+<% if current_user.admin? %>
+<tr>
+    <td><%= booking.name %></td>
+    <td><%= booking.number_of_people %></td>
+    <td><%= booking.start_time.strftime("%d/%m/%Y") %></td>
+    <td><%= booking.end_time.strftime("%d/%m/%Y") %></td>
+    <td><%= booking.id %></td>
+    
+    <td>
+    <%= link_to 'Edit', edit_booking_path(booking), class:"button is-small is-responsive" %>   
+    <%= link_to 'Delete', booking, method: :delete, data: { confirm: 'Are you sure?' }, class:"button is-small is-responsive is-danger" %>
+    </td>
+  </tr>
+<% elsif booking.user == current_user %>    
+<tr>
+    <td><%= booking.name %></td>
+    <td><%= booking.number_of_people %></td>
+    <td><%= booking.start_time.strftime("%d/%m/%Y") %></td>
+    <td><%= booking.end_time.strftime("%d/%m/%Y") %></td>
+    <td><%= booking.id %></td>
+    
+    <td>
+    <%= link_to 'Edit', edit_booking_path(booking), class:"button is-small is-responsive" %>
+    <%= link_to 'Delete', booking, method: :delete, data: { confirm: 'Are you sure?' }, class:"button is-small is-responsive is-danger" %>
+    </td>
+  </tr>
+  <% end %>
+</div>

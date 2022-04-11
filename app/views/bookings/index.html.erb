@@ -1,0 +1,37 @@
+<h1>Calendar</h1><box class="box">Bookings </box>
+<%= month_calendar events: @bookings do |date, bookings| %>  
+  <%= date.to_formatted_s(:short) %>  
+  <% bookings.each do |booking| %>  
+    <div>
+      <% if current_user.admin? %>
+      <%= booking.name %>
+      <% elsif booking.user == current_user %>  
+      <%= booking.name %>
+      <% end %>  
+    </div>  
+  <% end %>
+<% end %>
+<br />
+<h1>Bookings</h1>
+<div id="bookings">
+  <table class="table is-bordered" -row-even-hover-background-color>
+  <thead class="table">
+    <tr>
+      <th>Booking Name</th>
+      <th>Number Of People</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Booking ID</th>
+      
+      <th col-span="3"</th>
+    </tr>
+  </thead>
+    <% @bookings = Booking.all
+    @bookings = @bookings.sort_by {|booking| booking.start_time}
+    @bookings.each do |booking| %>
+    <%= render booking %>
+  <% end %>
+  </table>  
+</div>
+<br />
+<button class="button is-primary"><%= link_to "Add New booking", new_booking_path %></button>

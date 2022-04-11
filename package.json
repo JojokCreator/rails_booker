@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "@vizuaalog/bulmajs": "^0.12.1"
+  }
+}
